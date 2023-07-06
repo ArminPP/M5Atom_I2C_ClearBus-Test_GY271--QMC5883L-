@@ -60,7 +60,7 @@ void loop()
   // speeed read out of sensor
   static unsigned long FuelSensorLoopPM = 0;
   unsigned long FuelSensorLoopCM = millis();
-  if (FuelSensorLoopCM - FuelSensorLoopPM >= (5)) // ~ 5ms -> 200 Hz sampling loop (Serial.Print is slowing down the loop!)
+  if (FuelSensorLoopCM - FuelSensorLoopPM >= (1)) // 5 ~ 5ms -> 200 Hz sampling loop (Serial.Print is slowing down the loop!)
   {
 
     Magentometer.read();
@@ -123,20 +123,20 @@ void loop()
       if (error == 2)
       {
         LOG(LOG_INFO, "ERROR FAIL    #%i", error);
-        // while (1)
-        //   ;
+        while (1)
+          ;
       }
       else if (error == 5)
       {
         LOG(LOG_INFO, "ERROR TIMEOUT #%i", error);
-        // while (1)
-        //   ;
+        while (1)
+          ;
       }
       else
       {
         LOG(LOG_INFO, "ERROR UNKNOWN #%i", error);
-        // while (1)
-        //   ;
+        while (1)
+          ;
       }
     }
 
